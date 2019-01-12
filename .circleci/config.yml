@@ -23,7 +23,7 @@ jobs:
         - persist_to_workspace:
             root: /home/circleci
             paths:
-              - repo/build
+              - repo/dist
   deploy:
       docker:
         - image: circleci/python:2.7-jessie
@@ -36,7 +36,7 @@ jobs:
             command: sudo pip install awscli
         - run:
             name: Deploy to S3
-            command: aws s3 sync /home/circleci/repo/build/ s3://corncode.org --delete
+            command: aws s3 sync /home/circleci/repo/dist/ s3://corncode.org --delete
 
 workflows:
   version: 2
