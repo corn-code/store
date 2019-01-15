@@ -2,29 +2,43 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
-jobs:
-  build:
+version: 2 # CircleCI config version
+jobs: # A list of jobs
+  build: # Job for building application
       docker:
         - image: circleci/node:10.14.0
       working_directory: ~/repo
       steps:
+        # Fetch code from your repository
         - checkout
+
+        # Retrieve previous saved data to the cache"
         - restore_cache:
             keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
+
+        # Install project dependencies
         - run: npm install
+
+        # Save dependencies to the cache
         - save_cache:
             paths:
               - node_modules
             key: v1-dependencies-{{ checksum "package.json" }}
+
+        - run: npm rebuild node-sass
+
+        # Start building
         - run: CI=false npm run build
+
+        # Save ./dist folder to workplace
         - persist_to_workspace:
             root: /home/circleci
             paths:
               - repo/dist
-  deploy:
+
+  deploy: # Job for deploying application
       docker:
         - image: circleci/python:2.7-jessie
       working_directory: ~/repo
