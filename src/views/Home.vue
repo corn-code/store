@@ -1,19 +1,19 @@
 <template>
   <div class="home">
 
-    <viewer />
+    <!--<viewer />-->
 
-    <!--<products-list />-->
+    <products-list />
 
-    <!--<subscription-form />-->
+    <subscription-form />
 
   </div>
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator';
-  import ProductsList from '@/components/ProductsList.vue';
-  import SubscriptionForm from '@/components/SubscriptionForm.vue';
+  import {Component, Vue} from "vue-property-decorator";
+  import ProductsList from "@/components/ProductsList.vue";
+  import SubscriptionForm from "@/components/SubscriptionForm.vue";
   import Viewer from "@/components/Viewer/index.vue";
 
   @Component({

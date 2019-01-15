@@ -19,7 +19,7 @@
 <style>
   .time {
     font-size: 13px;
-    color: #999;
+    color: #999999;
   }
 
   .bottom {
