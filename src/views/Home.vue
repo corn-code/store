@@ -1,9 +1,11 @@
 <template>
   <div class="home">
 
-    <products-list />
+    <viewer />
 
-    <subscription-form />
+    <!--<products-list />-->
+
+    <!--<subscription-form />-->
 
   </div>
 </template>
@@ -12,9 +14,11 @@
   import {Component, Vue} from 'vue-property-decorator';
   import ProductsList from '@/components/ProductsList.vue';
   import SubscriptionForm from '@/components/SubscriptionForm.vue';
+  import Viewer from "@/components/Viewer/index.vue";
 
   @Component({
     components: {
+      Viewer,
       ProductsList,
       SubscriptionForm
     },
